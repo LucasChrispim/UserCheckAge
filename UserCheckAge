@@ -1,0 +1,52 @@
+package userage;
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author lucas
+ */
+public class UserAge {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        try{
+            int count =0;                                       //Counter for the loop
+            int numb =2;                                        //Counter to print how many chances left for the user put the right insert
+            while(count < 3){                                   //Using Loop to check 3 times in case the user doesn´t insert a number
+                System.out.println("Please,insert your age");   //Printing at the user screen message
+                Scanner age = new Scanner(System.in);           //Scanning the user insert
+                String ageinsert = age.next();                  //Giving the variable the value inserted by the user
+                    if(ageinsert.matches("[0-9]+")){            //Checking if the inserted value is a number or not
+                        int agenumber = Integer.parseInt(ageinsert);    //Convert the String in integer to check the specifications of the task
+                        if(agenumber < 18){                             //Using If Else to check all the possibilities of the task 
+                            System.out.println("Too Young To Vote");
+                            break;
+                        }
+                        else if(agenumber >= 18 && agenumber < 66) {
+                            System.out.println("Working Hard?");
+                            break;
+                        }
+                        else if(agenumber >= 66){
+                            System.out.println("Enoy Retirement");
+                            break;
+                        }
+                    }
+                    else{                                               //Printing error in case the value is not a number
+                        
+                        System.out.println("The value inserted is not a number");
+                        System.out.println("You have more "+ numb +" chances");
+                        numb--;                                         //Reduce one from the counter of the chances of the user,to show at the message
+                        
+                    }
+                count = count+1;                                        //Adding one more at the variable Count
+            }
+        }
+        catch(Exception e){
+        System.out.println("ERROR"); 
+        }
+    }
+    
+}
